@@ -1,7 +1,8 @@
 import {
     EMPLOYEE_UPDATE,
     EMPLOYEE_CREATE,
-    EMPLOYEES_UPDATE_SUCCESS
+    EMPLOYEES_UPDATE_SUCCESS,
+    EMPLOYEES_HAS_BEEN_FIRED
 } from '../actions/type';
 
 const INITIAL_STATE = {
@@ -17,6 +18,9 @@ export default (state = INITIAL_STATE, action) => {
         case EMPLOYEE_CREATE:
             return INITIAL_STATE;
         case EMPLOYEES_UPDATE_SUCCESS:
+            return INITIAL_STATE;
+        case EMPLOYEES_HAS_BEEN_FIRED:
+        console.log(action.type);
             return INITIAL_STATE;
         default:
             return state;

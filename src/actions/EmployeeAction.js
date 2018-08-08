@@ -3,7 +3,8 @@ import {
     EMPLOYEE_UPDATE, 
     EMPLOYEE_CREATE,
     EMPLOYEES_FETCH_SUCCESS,
-    EMPLOYEES_UPDATE_SUCCESS
+    EMPLOYEES_UPDATE_SUCCESS,
+    EMPLOYEES_HAS_BEEN_FIRED
 } from './type';
 import { Actions } from '../../node_modules/react-native-router-flux';
 
@@ -46,6 +47,18 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
             .set({ name, phone, shift })
             .then(() => {
                 dispatch({ type: EMPLOYEES_UPDATE_SUCCESS})
+            });
+    };
+};
+
+export const employeeDelete = ({ uid }) => {
+    const { currentUser } = firebase.auth();
+
+    return (dispatch) => {
+        firebase.database().ref(`/users/${ currentUser.uid }/employees/${ uid }`)
+            .remove()
+            .then(() => {
+                dispatch({ type: EMPLOYEES_HAS_BEEN_FIRED})
             });
     };
 };

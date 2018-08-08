@@ -26,7 +26,7 @@ class EmployeeForm extends Component{
                     />
                 </CardSection>
 
-                <CardSection >
+                <CardSection>
                     <Text style ={styles.pickerTextStyle}>Shift</Text>
 
                     <Picker
@@ -55,6 +55,7 @@ const mapsStatetoProps = ( state ) => {
 
 const styles={
     pickerTextStyle:{
+        flex: 1,
         fontSize: 18,
         paddingLeft: 20
     }
